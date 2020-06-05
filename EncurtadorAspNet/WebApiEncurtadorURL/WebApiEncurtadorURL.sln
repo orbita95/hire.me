@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiEncurtadorURL", "WebApiEncurtadorURL\WebApiEncurtadorURL.csproj", "{623BC2F7-6881-4350-A98C-BD0E7E8D0F3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiEncurtadorURL.Tests", "WebApiEncurtadorURL.Tests\WebApiEncurtadorURL.Tests.csproj", "{00F9C6C2-6362-434C-8D50-097B39359DAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{623BC2F7-6881-4350-A98C-BD0E7E8D0F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{623BC2F7-6881-4350-A98C-BD0E7E8D0F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{623BC2F7-6881-4350-A98C-BD0E7E8D0F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{623BC2F7-6881-4350-A98C-BD0E7E8D0F3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00F9C6C2-6362-434C-8D50-097B39359DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00F9C6C2-6362-434C-8D50-097B39359DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00F9C6C2-6362-434C-8D50-097B39359DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00F9C6C2-6362-434C-8D50-097B39359DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {071CC468-6C3B-45D5-82FA-242DF6122420}
+	EndGlobalSection
+EndGlobal
