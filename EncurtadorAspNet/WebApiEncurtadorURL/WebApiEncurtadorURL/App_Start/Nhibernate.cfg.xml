@@ -7,16 +7,16 @@
 
 
     <property name="connection.provider">
-      NHibernate.Connection.DriverConnectionProvider
+      <!-- some provider -->
     </property>
     <property name="connection.driver_class">
-      NHibernate.Driver.SqlClientDriver
+      <!-- some driver class -->
     </property>
     <property name="connection.connection_string">
-      Server=BR2303242W2\SQLEXPRESS;database=UrlTeste;Integrated Security=SSPI;
+      <!-- some conn -->
     </property>
     <property name="dialect">
-      NHibernate.Dialect.MsSql2012Dialect
+      <!-- some dialec -->
     </property>
 
     <!-- Drop and re-create the database schema on startup -->

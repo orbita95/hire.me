@@ -23,14 +23,14 @@ namespace WebApiEncurtadorURL.Controllers
             if (retorno)
             {
                 mensagem = encurtadorService.Retorno;
-                return Redirect(encurtadorService.Retorno);
+                //return Redirect(encurtadorService.Retorno);
             }
             else 
             {
                 mensagem = encurtadorService.Retorno;
             }
 
-            return mensagem;
+            return JsonConvert.SerializeObject(mensagem);
         }
 
         // POST api/<controller>

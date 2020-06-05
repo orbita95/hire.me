@@ -40,7 +40,7 @@ namespace WebApiEncurtadorURL.Services
                 }
                 else 
                 {
-                    Retorno = url.UrlOriginal;
+                    Retorno = "{'UrlOriginal': '" + url.UrlOriginal + "'}" ;
                     return true;
                 }
 
