@@ -117,6 +117,10 @@ namespace WebApiEncurtadorURL.Services
 
         private object GerarUrlEncurtada(string url, string alias) 
         {
+            
+            // O objetivo do teste é testar sua capacidade de lidar com a complexidade de
+            // criar o seu proprio encurtador, a forma que você usou abaixo impossibilita isso.
+            // da uma olhada nos objetivos propostos na readme.
             var urlPost = new StringBuilder("https://is.gd/create.php?format=json&");
 
             if (String.IsNullOrEmpty(alias))
