@@ -17,7 +17,7 @@ namespace WebApiEncurtadorURL.Repositories.Impl
 
         public void Save(TEntity entity)
         {
-            s.Save(entity);
+            s.SaveOrUpdate(entity);
         }
 
         public IList<TEntity> ToList()

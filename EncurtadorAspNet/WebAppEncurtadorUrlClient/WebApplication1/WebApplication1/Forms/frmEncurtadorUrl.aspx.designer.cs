@@ -33,12 +33,57 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.TextBox alias_tb;
 
         /// <summary>
-        /// retorno_lbl control.
+        /// shortUrl_lbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label retorno_lbl;
+        protected global::System.Web.UI.WebControls.Label shortUrl_lbl;
+
+        /// <summary>
+        /// alias_lbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label alias_lbl;
+
+        /// <summary>
+        /// tempoOperacao_lbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label tempoOperacao_lbl;
+
+        /// <summary>
+        /// alias_se_tb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox alias_se_tb;
+
+        /// <summary>
+        /// urlOriginal_lbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label urlOriginal_lbl;
+
+        /// <summary>
+        /// error_lbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label error_lbl;
     }
 }

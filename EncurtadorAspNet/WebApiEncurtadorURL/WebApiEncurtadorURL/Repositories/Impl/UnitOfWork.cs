@@ -19,12 +19,12 @@ namespace WebApiEncurtadorURL.Repositories.Impl
 
         public void Commit()
         {
-            if (!transaction.IsActive)
+            if (transaction.IsActive)
             {
-                throw new InvalidOperationException("No active transation");
+                transaction.Commit();
             }
 
-            transaction.Commit();
+            
         }
 
         public void Dispose()

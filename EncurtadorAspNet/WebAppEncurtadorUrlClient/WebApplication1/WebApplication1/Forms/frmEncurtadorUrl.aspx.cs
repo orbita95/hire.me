@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.UI;
@@ -18,7 +19,11 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            urlOriginal_lbl.Text = "";
+            shortUrl_lbl.Text = "";
+            alias_lbl.Text = "";
+            tempoOperacao_lbl.Text = "";
+            error_lbl.Text = "";
         }
 
        
@@ -26,17 +31,50 @@ namespace WebApplication1
         protected void Unnamed_Click1(object sender, EventArgs e)
         {
             var response = PostUrlEncurtada(urlPadrao_tb.Text, alias_tb.Text);
-            retorno_lbl.Text = response.ToString();
+
+            if (String.IsNullOrEmpty(response.errorcode))
+            {
+                alias_lbl.Text = response.alias;
+                shortUrl_lbl.Text = response.shorturl;
+                tempoOperacao_lbl.Text = response.tempoOperacao;
+                urlOriginal_lbl.Enabled = false;
+                error_lbl.Enabled = false;
+                alias_lbl.Enabled = false;
+            }
+            else 
+            {
+                error_lbl.Enabled = true;
+                error_lbl.Text = response.errormessage;
+            }
+            
         }
 
         protected void Unnamed_Click(object sender, EventArgs e)
         {
-            var response = GetUrlEncurtada(alias_tb.Text);
+            var response = GetUrlEncurtada(alias_se_tb.Text);
 
-            retorno_lbl.Text = response.ToString();
+            if (String.IsNullOrEmpty(response.errorcode))
+            {
+                
+
+                shortUrl_lbl.Enabled = false;
+                tempoOperacao_lbl.Enabled = false;
+                urlOriginal_lbl.Enabled = false;
+                error_lbl.Enabled = false;
+                alias_lbl.Enabled = false;
+
+                urlOriginal_lbl.Text = response.url;
+            }
+            else
+            {
+                error_lbl.Enabled = true;
+                error_lbl.Text = response.errormessage;
+            }
+            
+            
         }
 
-        private object PostUrlEncurtada(string url, string alias)
+        private UrlWebReq PostUrlEncurtada(string url, string alias)
         {
             var urlPost = new StringBuilder("https://localhost:44368/api/URLs?");
             
@@ -49,18 +87,18 @@ namespace WebApplication1
                 urlPost.AppendFormat("url={0}&alias={1}", url, alias);
             }
 
-            return makePostRequest(urlPost.ToString());
-
+            var retorno = makePostRequest(urlPost.ToString());
+            return JsonConvert.DeserializeObject<UrlWebReq>(retorno.ToString());
 
         }
 
-        private object GetUrlEncurtada(string alias)
+        private UrlWebReq GetUrlEncurtada(string alias)
         {
             var urlPost = new StringBuilder("https://localhost:44368/api/URLs?");
             urlPost.AppendFormat("alias={0}",  alias);
 
-            return makeGetRequest( urlPost.ToString());
-
+            var retorno = makeGetRequest(urlPost.ToString());
+            return JsonConvert.DeserializeObject<UrlWebReq>(retorno.ToString());
 
         }
 
@@ -116,11 +154,14 @@ namespace WebApplication1
     }
 
 
-    internal class RetornoUrl
+    internal class UrlWebReq
     {
-        public string Description { get; set; }
-        public string UrlEncurtada { get; set; }
-        public string UrlOriginal { get; set; }
+        public string tempoOperacao { get; set; }
+        public string url { get; set; }
+        public string errorcode { get; set; }
+        public string errormessage { get; set; }
+        public string shorturl { get; set; }
+        public string alias { get; set; }
     }
 
 }

@@ -13,38 +13,61 @@ namespace WebApiEncurtadorURL.Controllers
     {
 
         // GET api/<controller>/5
-        public object Get(string alias)
+        public IHttpActionResult Get(string alias)
         {
 
             var encurtadorService = new EncurtadorFacadeService();
-            var mensagem = string.Empty;
 
             var retorno = encurtadorService.GetURL(alias);
-            if (retorno)
-            {
-                mensagem = encurtadorService.Retorno;
-                //return Redirect(encurtadorService.Retorno);
-            }
-            else 
-            {
-                mensagem = encurtadorService.Retorno;
-            }
+            encurtadorService.Dispose();
 
-            return JsonConvert.SerializeObject(mensagem);
+            return Ok(encurtadorService.retorno);            
         }
 
         // POST api/<controller>
-        public string Post(string url, string alias = null)
+        public IHttpActionResult Post(string url, string alias = null)
+        {
+            var encurtadorService = new EncurtadorFacadeService();
+            
+            var retorno = encurtadorService.AddURL(url, alias);
+            encurtadorService.Dispose();
+
+            return Ok(retorno);
+
+        }
+
+        [HttpGet]
+        [Route("api/URLs/{quantidade}/maisacessadas")]
+        public IHttpActionResult Get(int quantidade)
         {
             var encurtadorService = new EncurtadorFacadeService();
             var mensagem = string.Empty;
 
-            var retorno = encurtadorService.AddURL(url, alias);
-            
-            return JsonConvert.SerializeObject(encurtadorService.Retorno);
+            var urls = encurtadorService.GetTenMost(quantidade);
+            encurtadorService.Dispose();
+
+            if (urls != null)
+                return Ok(urls);
+            else
+                return Ok(encurtadorService.retorno);
 
         }
 
-        
+        [HttpGet]
+        [Route("api/URLs/{alias}/ir")]
+        public IHttpActionResult GetUrlByAlias(string alias)
+        {   
+            var encurtadorService = new EncurtadorFacadeService();
+            
+            var retorno = encurtadorService.GetURL(alias);
+            encurtadorService.Dispose();
+
+            if(retorno)
+                return Redirect(encurtadorService.retorno.url);
+            else
+                return Ok(encurtadorService.retorno);
+        }
+
+
     }
 }

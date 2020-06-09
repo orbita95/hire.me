@@ -1,0 +1,44 @@
+title Untitled
+
+parallel{
+    Controller->+EncurtadorService: GetUrl()
+    EncurtadorService->+RegistroUrlRepository: FindByAlias()
+    RegistroUrlRepository->+Db: HqlSelectByAlias()
+    Db-->-RegistroUrlRepository:
+    RegistroUrlRepository-->-EncurtadorService: 
+    alt if(EntidadeNaoExiste)
+        EncurtadorService->+EncurtadorService: Retorno.ErrorMessage()
+    else else
+        EncurtadorService->+EncurtadorService: quantidadeAcessos++
+        EncurtadorService->+RegistroUrlRepository: Save(RegistroUrl)
+        RegistroUrlRepository->+Db: Update()
+        Db-->-RegistroUrlRepository:
+        RegistroUrlRepository-->-EncurtadorService:
+    end
+    EncurtadorService-->-Controller: url
+    
+    Controller->+EncurtadorService: AddUrl()
+    alt if(UrlExiste)
+        EncurtadorService->EncurtadorService: ErrorMessage
+    else else
+        EncurtadorService->EncurtadorService: GeraAliasAndShortUrl
+        EncurtadorService->+RegistroUrlRepository: Save(RegistroUrl)
+        RegistroUrlRepository->+Db: Save()
+        Db-->-RegistroUrlRepository:
+        RegistroUrlRepository-->-EncurtadorService: 
+        
+    end
+    EncurtadorService-->-Controller: 
+    
+    Controller->+EncurtadorService: GetTenMost()
+    EncurtadorService->+RegistroUrlRepository: LisAll()
+    RegistroUrlRepository->+Db: HqlSelectAll()
+    Db-->-RegistroUrlRepository:
+    RegistroUrlRepository-->-EncurtadorService: 
+    EncurtadorService->+EncurtadorService: FindMaisAcessados()
+    EncurtadorService-->-Controller: 
+}
+
+
+
+

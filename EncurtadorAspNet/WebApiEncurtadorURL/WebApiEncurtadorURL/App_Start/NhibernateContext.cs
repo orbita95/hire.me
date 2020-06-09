@@ -13,6 +13,7 @@ namespace WebApiEncurtadorURL.App_Start
         public static ISession GetSession()
         {
             var configuration = new Configuration();
+            
             var configurationPath = HttpContext.Current.Server.MapPath(@"~/App_Start/Nhibernate.cfg.xml");
             configuration.Configure(configurationPath);
 

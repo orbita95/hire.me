@@ -11,8 +11,9 @@
     <property name="UrlOriginal"></property>
     <property name="Alias"></property>
     <property name="UrlEncurtada"></property>
+    <property name="QuantidadeAcessos"></property>
     
-    
+
   </class>
   
 </hibernate-mapping>
