@@ -1,3 +1,15 @@
+# Usar api online
+para usar a api basta acessar a url http://shorturl.somee.com/
+com os seguinte complementos:
+    http://shorturl.somee.com/api/URLs/{parametro de quantidade}/maisacessadas -- retorno as urls mais acessadas
+    http://shorturl.somee.com/api/URLs?alias={somealias} -- retorna informações da url a partir do alias
+    method post -- http://shorturl.somee.com/api/URLs?alias={alias}&url={url} -- cadastra a url e gera uma shorturl (o alias é opcional)
+    http://shorturl.somee.com/api/URLs/lotobr/ir -- se o alias existir o cliente é redirecionado para url 
+
+os testes para o serviço foram feitos usando o Postman.
+
+#### -----------------------------------------
+    
 # Hire.me
 Um pequeno projeto para testar suas habilidades como programador.
 
